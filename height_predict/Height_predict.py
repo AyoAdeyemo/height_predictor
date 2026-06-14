@@ -1,9 +1,12 @@
 import streamlit as st
 import pandas as pd
+import os
 import joblib
 
-# Load model
-model = joblib.load("height_predictor_lr.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "height_predictor_lr.pkl")
+
+model = joblib.load(model_path)
 
 st.title("Height Prediction App")
 
