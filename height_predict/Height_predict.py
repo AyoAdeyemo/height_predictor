@@ -8,7 +8,7 @@ model_path = os.path.join(BASE_DIR, "height_predictor_lr.pkl")
 
 model = joblib.load(model_path)
 
-st.title("Height Prediction App")
+st.title("Clinical Intake Support Tool (Height Estimator")
 
 # -------------------
 # User Inputs
@@ -23,10 +23,6 @@ gender = st.selectbox(
     ["Male", "Female"]
 )
 
-age_cat = st.selectbox(
-    "Age Category",
-    ["Young Adult", "Adult", "Senior"]
-)
 
 smoker = st.selectbox(
     "Smoker",
