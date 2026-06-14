@@ -48,15 +48,16 @@ smoker_1 = 1 if smoker == "Yes" else 0
 
 input_data = pd.DataFrame({
     "Weight": [weight],
-    "Gender_Female": [gender_female],
-    "Gender_Male": [gender_male],
-    "Smoker_0": [smoker_0],
-    "Smoker_1": [smoker_1],
+    "Gender_Female": [1 if gender == "Female" else 0],
+    "Gender_Male": [1 if gender == "Male" else 0],
+    "Smoker_0": [1 if smoker == "No" else 0],
+    "Smoker_1": [1 if smoker == "Yes" else 0],
     "Age_Category_Young Adult": [1 if age_cat == "Young Adult" else 0],
     "Age_Category_Adult": [1 if age_cat == "Adult" else 0],
     "Age_Category_Senior": [1 if age_cat == "Senior" else 0]
 })
 
+input_data = input_data.reindex(columns=model.feature_names_in_, fill_value=0)
 # -------------------
 # Predict
 # -------------------
@@ -67,7 +68,7 @@ if st.button("Predict Height"):
 
     st.success(f"Predicted Height: {prediction:.2f} cm")
 
-    height_m = prediction[0] / 100
+    height_m = prediction / 100
 
     bmi = weight / (height_m ** 2)
 
