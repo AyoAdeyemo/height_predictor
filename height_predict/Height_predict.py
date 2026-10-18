@@ -8,7 +8,16 @@ model_path = os.path.join(BASE_DIR, "height_predictor_lr.pkl")
 
 model = joblib.load(model_path)
 
-st.title("Clinical Intake Support Tool (Height Estimator")
+st.title("📏 Height Predictor")
+
+st.write(
+    "Predict height using demographic and physical characteristics."
+)
+
+st.link_button(
+    "💻 View Source Code on GitHub",
+    "https://github.com/AyoAdeyemo/height_predictor"
+)
 
 # -------------------
 # User Inputs
@@ -98,6 +107,28 @@ if st.button("Predict Height"):
     bmi = weight / (height_m ** 2)
 
     st.metric(
-        "Estimated BMI",
+        "BMI based on predicted height",
         f"{bmi:.1f}"
+    )
+
+# About section
+st.divider()
+
+with st.expander("ℹ️ About this model"):
+
+    st.write(
+        """
+        This application uses a machine-learning regression model trained
+        on demographic and physical characteristics to estimate height.
+
+        The prediction is intended for educational and demonstration
+        purposes and should not be interpreted as a medical or
+        anthropometric measurement.
+        """
+    )
+
+    st.write("**Technology used:**")
+
+    st.write(
+        "Python • Pandas • NumPy • Scikit-learn • Joblib • Streamlit"
     )
