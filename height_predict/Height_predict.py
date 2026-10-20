@@ -23,7 +23,7 @@ st.link_button(
 # User Inputs
 # -------------------
 
-weight = st.number_input("Weight", min_value=30.0, max_value=250.0, value=70.0)
+weight = st.number_input("Weight (kg)", min_value=30.0, max_value=250.0, value=70.0)
 
 age = st.number_input("Age", min_value=18, max_value=120, value=30)
 
